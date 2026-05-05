@@ -1,0 +1,19 @@
+# Virtual environment
+play-venv/
+
+# Environment secrets — NEVER commit this
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# pytest cache
+.pytest_cache/
+
+# Reports — generated at runtime
+reports/
+
+# VS Code
+.vscode/
