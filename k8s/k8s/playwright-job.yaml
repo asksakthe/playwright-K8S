@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: playwright-tests
+  labels:
+    app: playwright-tests
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    spec:
+      containers:
+      - name: playwright-tests
+        image: pwframeworkacr.azurecr.io/playwright-tests:latest
+        env:
+        - name: BASE_URL
+          value: "https://the-internet.herokuapp.com"
+        - name: HEADLESS
+          value: "true"
+        - name: BROWSER
+          value: "chromium"
+      restartPolicy: Never
+  backoffLimit: 1
