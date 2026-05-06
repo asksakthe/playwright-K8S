@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install pytest pytest-html python-dotenv faker
+RUN pip install playwright pytest pytest-html python-dotenv faker
 
 CMD ["pytest", "-m", "smoke", "-v", "--html=reports/report.html", "--self-contained-html"]
