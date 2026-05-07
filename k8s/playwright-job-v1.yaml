@@ -11,10 +11,12 @@ spec:
       containers:
       - name: playwright-tests
         image: pwframeworkacr.azurecr.io/playwright-tests:latest
-        envFrom:
-        - configMapRef:
-            name: playwright-config
-        - secretRef:
-            name: playwright-secrets
+        env:
+        - name: BASE_URL
+          value: "https://the-internet.herokuapp.com"
+        - name: HEADLESS
+          value: "true"
+        - name: BROWSER
+          value: "chromium"
       restartPolicy: Never
   backoffLimit: 1
