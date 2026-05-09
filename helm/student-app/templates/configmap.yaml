@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: student-config
+  namespace: {{ .Values.namespace }}
+data:
+  REGISTRATION_URL: "http://registration-service:5000"
+  ENQUIRY_URL: "http://enquiry-service:5001"
+  DB_NAME: {{ .Values.postgres.database }}
+  DB_USER: {{ .Values.postgres.username }}

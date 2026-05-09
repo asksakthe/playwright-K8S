@@ -1,0 +1,19 @@
+namespace: student-app
+
+registration:
+  image: python:3.11-slim
+  replicas: 1
+  port: 5000
+
+enquiry:
+  image: python:3.11-slim
+  replicas: 1
+  port: 5001
+
+postgres:
+  image: postgres:15
+  replicas: 1
+  port: 5432
+  database: studentdb
+  username: student
+  password: student123
