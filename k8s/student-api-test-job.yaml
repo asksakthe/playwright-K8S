@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: student-api-tests
+  namespace: myapp-ns
+  labels:
+    app: student-api-tests
+spec:
+  ttlSecondsAfterFinished: 300
+  template:
+    spec:
+      containers:
+      - name: student-api-tests
+        image: pwframeworkacr.azurecr.io/playwright-tests:latest
+        command:
+        - pytest
+        - -m
+        - api
+        - -v
+        - --tb=short
+        env:
+        - name: REGISTRATION_URL
+          value: "http://registration-service:5000"
+        - name: ENQUIRY_URL
+          value: "http://enquiry-service:5001"
+      restartPolicy: Never
+  backoffLimit: 1
