@@ -1,12 +1,12 @@
 namespace: student-app
 
 registration:
-  image: pwframeworkacr.azurecr.io/registration-service:latest
+  image: python:3.11-slim
   replicas: 1
   port: 5000
 
 enquiry:
-  image: pwframeworkacr.azurecr.io/enquiry-service:latest
+  image: python:3.11-slim
   replicas: 1
   port: 5001
 

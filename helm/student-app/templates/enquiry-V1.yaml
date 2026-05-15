@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enquiry-service
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.enquiry.replicas }}
+  selector:
+    matchLabels:
+      app: enquiry-service
+  template:
+    metadata:
+      labels:
+        app: enquiry-service
+    spec:
+      containers:
+      - name: enquiry-service
+        image: {{ .Values.enquiry.image }}
+        ports:
+        - containerPort: {{ .Values.enquiry.port }}
+        envFrom:
+        - configMapRef:
+            name: student-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: enquiry-service
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: enquiry-service
+  ports:
+  - port: {{ .Values.enquiry.port }}
+    targetPort: {{ .Values.enquiry.port }}

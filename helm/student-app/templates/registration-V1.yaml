@@ -18,9 +18,12 @@ spec:
         image: {{ .Values.registration.image }}
         ports:
         - containerPort: {{ .Values.registration.port }}
+        command: ["python", "-m", "http.server", "5000"]
         envFrom:
         - configMapRef:
             name: student-config
+        - secretRef:
+            name: student-secrets
 ---
 apiVersion: v1
 kind: Service
