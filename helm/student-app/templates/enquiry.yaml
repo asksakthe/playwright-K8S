@@ -18,7 +18,6 @@ spec:
         image: {{ .Values.enquiry.image }}
         ports:
         - containerPort: {{ .Values.enquiry.port }}
-        command: ["python", "-m", "http.server", "5001"]
         envFrom:
         - configMapRef:
             name: student-config
